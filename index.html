@@ -3,11 +3,11 @@
   <head>
     <title>Listening to Nodes</title>
     <style>
-     div {
-       border: 1px solid red;
-       padding: 6px;
-       min-height: 12px;
-     }
+      div {
+        border: 1px solid red;
+        padding: 6px;
+        min-height: 12px;
+      }
     </style>
   </head>
 
@@ -16,9 +16,7 @@
 
     <br />
 
-    <div>
-      <label>Input:</label><input />
-    </div>
+    <div><label>Input:</label><input /></div>
 
     <br />
 
@@ -30,12 +28,24 @@
           3
           <div>
             4
-            <div>
-              5
-            </div>
+            <div>5</div>
           </div>
         </div>
       </div>
     </div>
   </body>
 </html>
+<script type="text/javascript">
+  const divs = document.querySelectorAll("div");
+
+  function bubble(e) {
+    // stop! that! propagation!
+    e.stopPropagation();
+
+    console.log(this.firstChild.nodeValue.trim() + " bubbled");
+  }
+
+  for (let i = 0; i < divs.length; i++) {
+    divs[i].addEventListener("click", bubble);
+  }
+</script>
